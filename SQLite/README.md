@@ -144,3 +144,65 @@ LIMIT 10
 | Johnson           | Rojas             | 17.91          |
 | Park              | Wichterlová       | 	16.86         |
 | Peacock           | Mercier           | 16.86          |
+
+#### Join with Grouping Subquery Example
+
+**Table**:
+
+| User   |          |
+|--------|----------|
+|        |          |
+| **Id** | **Name** |
+|        |          |
+| 1      | Yevhen   |
+| 2      | Yevhen   |
+| 3      | Yevhen   |
+| 4      | John     |
+| 5      | Sam      |
+| 6      | Fred     |
+| 7      | John     |
+| 8      | Henry    |
+| 9      | Henry    |
+| 10     | Henry    |
+| ...    |          |
+
+**Task:**
+
+- Which Users have the same names?
+- Return `User ID`, `User Name`, `Duplication Amount`
+
+```
+SELECT 
+  u.Id as `User ID`, 
+  c.Name as `User Name`, 
+  c.Amount as `Duplication Amount`
+FROM 
+  User u
+JOIN 
+  (SELECT 
+      Name, COUNT(*) as Amount 
+   FROM 
+      User 
+   GROUP BY 
+      Name
+   HAVING COUNT(*) > 1
+   ) AS c
+ON u.Name=c.Name
+```
+
+**Output**:
+
+| User ID | User Name | Duplication Amount |
+|---------|-----------|--------------------|
+| 1       | Yevhen    | 3                  |
+| 2       | Yevhen    | 3                  |
+| 3       | Yevhen    | 3                  |
+| 4       | John      | 2                  |
+| 5       | Sam       | 1                  |
+| 6       | Fred      | 1                  |
+| 7       | James     | 1                  |
+| 8       | John      | 2                  |
+| 9       | Henry     | 2                  |
+| 10      | Henry     | 2                  |
+| ...     |           |                    |
+
