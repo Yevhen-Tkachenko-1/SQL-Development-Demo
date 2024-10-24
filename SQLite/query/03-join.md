@@ -2,16 +2,16 @@
 
 #### Tables
 
-| Employee       |              |     |          | Customer       |              |                  |
-|----------------|--------------|-----|----------|----------------|--------------|------------------|
-|                |              |     |          |                |              |                  |
-| **EmployeeId** | **LastName** | ... |          | **EmployeeId** | **LastName** | **SupportRepId** |
-|                |              |     |          |                |              |                  |
-| 1              | Adams        |     |          | 1              | Gonçalves    | 3                |
-| 2              | Edwards      |     |          | 2              | Köhler       | 5                |
-| 3              | Peacock      |     |          | 3              | Tremblay     | 3                |
-| 4              | Park         |     |          | 4              | Hansen       | 4                |
-| 5              | Johnson      |     |          | 5              | Wichterlová  | 4                |
+| Employee       |              |     | * | Customer       |              |                  |
+|----------------|--------------|-----|---|----------------|--------------|------------------|
+|                |              |     | * |                |              |                  |
+| **EmployeeId** | **LastName** | ... | * | **EmployeeId** | **LastName** | **SupportRepId** |
+|                |              |     | * |                |              |                  |
+| 1              | Adams        |     | * | 1              | Gonçalves    | 3                |
+| 2              | Edwards      |     | * | 2              | Köhler       | 5                |
+| 3              | Peacock      |     | * | 3              | Tremblay     | 3                |
+| 4              | Park         |     | * | 4              | Hansen       | 4                |
+| 5              | Johnson      |     | * | 5              | Wichterlová  | 4                |
 
 #### Invoice table:
 
