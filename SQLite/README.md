@@ -4,13 +4,13 @@ _Learn and play with SQLite Database: make query for data reading, creating, upd
 Implemented based on LinkedIn learning course:
 [SQL Essential Training](https://www.linkedin.com/learning/sql-essential-training-20685933)
 
-### Local set up
+#### Local set up
 
 To be ready execute queries: 
 - Download and install [SQLite Browser](https://sqlitebrowser.org/dl/) app.
 - Open SQLite Browser app and import database schema and data from [this](database/WSDA_Music.db) file.
 
-### Run queries
+#### Run queries
 
 Open SQLite Browser app, go to `Execute SQL` tab and paste queries from next examples:
 
