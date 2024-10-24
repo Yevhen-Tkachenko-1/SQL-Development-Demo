@@ -1,5 +1,7 @@
 -- Grouping query
 
+There are tables:
+
 /*
 Task:
 1. For each City in each Country get Average amount and Number of purchases
@@ -9,6 +11,7 @@ Task:
 5. Limit to 20
 */
 
+```
 SELECT
 	BillingCountry AS Country,
 	BillingCity AS City,
@@ -25,3 +28,4 @@ HAVING
 ORDER BY
 	BillingCountry, BillingCity
 LIMIT 20
+```
