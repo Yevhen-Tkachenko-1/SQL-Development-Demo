@@ -1,4 +1,4 @@
-# SQL Demo using SQLite
+# SQL Querying using SQLite Database
 _Learn and play with SQLite Database: make query for data reading, creating, updating, deleting_
 
 Implemented based on LinkedIn learning course:
@@ -17,7 +17,6 @@ Content:
   * [Add row](#add-row)
   * [Update row](#update-row)
   * [Delete row](#delete-row)
-* [SQLite Preparation](#sqlite-preparation)
 * [SQLite Execute](#sqlite-execute)
   * [Join Example](#join-example)
 
@@ -79,15 +78,15 @@ ON
 
 `DELETE FROM ... WHERE`
 
-### SQLite Preparation
-
-In your local machine: 
-- Download and install [SQLite Browser](https://sqlitebrowser.org/dl/) app.
-- Open SQLite Browser app and import database schema and data from [this](database/WSDA_Music.db) file.
-
 ### SQLite Execute
 
-Open SQLite Browser app, go to `Execute SQL` tab and paste queries from next examples:
+In your local machine:
+
+- Download and install [SQLite Browser](https://sqlitebrowser.org/dl/) app
+- Open SQLite Browser app 
+- Import database schema and data from [this](database/WSDA_Music.db) file
+- Go to `Execute SQL` tab 
+- Run following queries:
 
 #### Join Example
 
@@ -107,9 +106,8 @@ Open SQLite Browser app, go to `Execute SQL` tab and paste queries from next exa
 
 **Task:**
 
-What employees are responsible for the 10 highest individual sales?
-
-Return `Employee Lastname`, `Customer Lastname`, `Invoice Amount`.
+- What employees are responsible for the 10 highest individual sales?
+- Return `Employee Lastname`, `Customer Lastname`, `Invoice Amount`.
 
 **Solution:**
 ```
