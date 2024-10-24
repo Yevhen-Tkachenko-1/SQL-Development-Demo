@@ -1,8 +1,8 @@
 # SQL Development
 
-Learn and play with SQL Databases
+_Learn and play with SQL Databases_
 
-Content:
+**Content**:
 
--[SQLite Demo](SQLite/README.md)
--[PostgreSQL Demo](PostgreSQL/README.md)
+- [SQLite Demo](SQLite/README.md)
+- [PostgreSQL Demo](PostgreSQL/README.md)

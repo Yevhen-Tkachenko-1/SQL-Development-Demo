@@ -1,5 +1,5 @@
 # SQLite-Demo
-Learn and play with SQL Database: make query for data reading, creating, updating, deleting
+_Learn and play with SQLite Database: make query for data reading, creating, updating, deleting_
 
 Implemented based on LinkedIn learning course:
 [SQL Essential Training](https://www.linkedin.com/learning/sql-essential-training-20685933)
