@@ -1,29 +1,27 @@
-# SQLite-Demo
+# SQL Demo using SQLite
 _Learn and play with SQLite Database: make query for data reading, creating, updating, deleting_
 
 Implemented based on LinkedIn learning course:
 [SQL Essential Training](https://www.linkedin.com/learning/sql-essential-training-20685933)
 
-### Preparation
+Content:
 
-In your local machine: 
-- Download and install [SQLite Browser](https://sqlitebrowser.org/dl/) app.
-- Open SQLite Browser app and import database schema and data from [this](database/WSDA_Music.db) file.
+* [SQL Overview](#sql-overview)
+  * [Simple Select](#simple-select)
+  * [Filter Statements](#filter-statements)
+  * [Simple Join](#simple-join)
+  * [Modification Functions](#modification-functions)
+  * [Aggregation Functions](#aggregation-functions)
+  * [Grouping](#grouping)
+  * [Nested](#nested)
+  * [Add row](#add-row)
+  * [Update row](#update-row)
+  * [Delete row](#delete-row)
+* [SQLite Preparation](#sqlite-preparation)
+* [SQLite Execute](#sqlite-execute)
+  * [Join Example](#join-example)
 
-### Run queries
-
-Open SQLite Browser app, go to `Execute SQL` tab and paste queries from next examples:
-
-* [Simple Select](#simple-select)
-* [Filter Statements](#filter-statements)
-* [Simple Join](#simple-join)
-* [Modification Functions](#modification-functions)
-* [Aggregation Functions](#aggregation-functions)
-* [Grouping](#grouping)
-* [Nested](#nested)
-* [Add row](#add-row)
-* [Update row](#update-row)
-* [Delete row](#delete-row)
+### SQL Overview
 
 #### Simple Select
 
@@ -35,7 +33,11 @@ Open SQLite Browser app, go to `Execute SQL` tab and paste queries from next exa
 
 #### Simple Join
 
+Pattern:
+
 `SELECT ... FROM ... JOIN ... ON ...`
+
+Usage:
 
 ```
 SELECT
@@ -49,7 +51,47 @@ ON
     TableA.id = TableB.referenceId
 ```
 
-**Example Tables:**
+#### Modification Functions
+
+`UPPER`, `LENGTH`, `REPLACE(value, signFrom, signTo)`, `IFNULL(value, default)`, `SUBSTR(column, index, lenght)`, `||`, `STRFDATE(dateformat, datevalue)`
+
+#### Aggregation Functions
+
+`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`, and functional `ROUND(value, decimalDigitsNumber)`
+
+#### Grouping
+
+`GROUP BY`, `HAVING`
+
+#### Nested
+
+`IS`
+
+#### Add row
+
+`INSERT INTO ... VALUES ...`
+
+#### Update row
+
+`UPDATE ... SET ... WHERE`
+
+#### Delete row
+
+`DELETE FROM ... WHERE`
+
+### SQLite Preparation
+
+In your local machine: 
+- Download and install [SQLite Browser](https://sqlitebrowser.org/dl/) app.
+- Open SQLite Browser app and import database schema and data from [this](database/WSDA_Music.db) file.
+
+### SQLite Execute
+
+Open SQLite Browser app, go to `Execute SQL` tab and paste queries from next examples:
+
+#### Join Example
+
+**Tables:**
 
 | Employee       |              | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Customer       |              |                  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Invoice       |                |           |
 |----------------|--------------|--------------------------------------------------------------|----------------|--------------|------------------|--------------------------------------------------------------|---------------|----------------|-----------|
@@ -63,7 +105,7 @@ ON
 | 5              | Johnson      |                                                              | 5              | Wichterlová  | 4                |                                                              | 5             | 23             | 13.86     |
 | ...            |              |                                                              | ...            |              |                  |                                                              | ...           |                |           |
 
-**Example Task:**
+**Task:**
 
 What employees are responsible for the 10 highest individual sales?
 
@@ -104,31 +146,3 @@ LIMIT 10
 | Johnson           | Rojas             | 17.91          |
 | Park              | Wichterlová       | 	16.86         |
 | Peacock           | Mercier           | 16.86          |
-
-#### Modification Functions
-
-`UPPER`, `LENGTH`, `REPLACE(value, signFrom, signTo)`, `IFNULL(value, default)`, `SUBSTR(column, index, lenght)`, `||`, `STRFDATE(dateformat, datevalue)`
-
-#### Aggregation Functions
-
-`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`, and functional `ROUND(value, decimalDigitsNumber)`
-
-#### Grouping
-
-`GROUP BY`, `HAVING`
-
-#### Nested
-
-`IS`
-
-#### Add row
-
-`INSERT INTO ... VALUES ...`
-
-#### Update row
-
-`UPDATE ... SET ... WHERE`
-
-#### Delete row
-
-`DELETE FROM ... WHERE` 
