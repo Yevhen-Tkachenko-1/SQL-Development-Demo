@@ -5,8 +5,10 @@ _Learn and play with PostgreSQL Database: make query for data reading, creating,
 Implemented based on LinkedIn learning course:
 [PostgreSQL Essential Training](https://www.linkedin.com/learning/postgresql-essential-training-22611610)
 
-#### Create Table example
 
+#### Solution to the challenge: Create Table
+
+Create new Table named `barries` in default `public` schema: 
 ```
 CREATE TABLE public.barries
 (
@@ -21,7 +23,7 @@ CREATE TABLE public.barries
 );
 ```
 
-#### Insert Data example
+Insert data to `barries` table:
 
 ```
 INSERT 
@@ -32,7 +34,7 @@ INSERT
         ('Strawberry',  ARRAY['red', 'pink'],           ARRAY['Europe', 'North America'], '1300-01-01'::date, 5),
         ('Raspberry',   ARRAY['red', 'black'],          ARRAY['Europe', 'Asia'],          '1500-01-01'::date, 6),
         ('Blackberry',  ARRAY['black', 'dark purple'],  ARRAY['North America', 'Europe'], '1600-01-01'::date, 7),
-        ('Cranberry',   ARRAY['red'],                   ARRAY['North America'],           NULL,               5),
+        ('Cranberry',   ARRAY['red'],                   ARRAY['North America'],           NULL,               5),  -- NULL for discovery_date
         ('Gooseberry',  ARRAY['green', 'yellow'],       ARRAY['Europe', 'Asia'],          NULL,               3),  -- NULL for discovery_date
         ('Mulberry',    ARRAY['black', 'white', 'red'], ARRAY['China', 'India'],          NULL,               6),  -- NULL for discovery_date
         ('Elderberry',  ARRAY['purple', 'black'],       ARRAY['Europe', 'North America'], '1000-01-01'::date, 5),
