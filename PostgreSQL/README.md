@@ -22,6 +22,9 @@ CREATE TABLE public.barries
     CONSTRAINT relative_size_range_check CHECK (relative_size BETWEEN 1 AND 10) NOT VALID
 );
 ```
+In `pgAdmin` app &#8594; `barries` table &#8594; `SQL` tab it will look like this:
+
+![](image/1.PNG)
 
 Insert data to `barries` table:
 
@@ -41,3 +44,7 @@ INSERT
         ('Huckleberry', ARRAY['blue', 'purple'],        ARRAY['North America'],           '1900-01-01'::date,             4),
         ('Salmonberry', ARRAY['yellow', 'orange'],      ARRAY['Pacific Northwest'],       NULL,                           3);  -- NULL for discovery_date
 ```
+
+In `pgAdmin` app &#8594; `barries` table &#8594; `All Rows` button it will look like this:
+
+![](image/2.PNG)
