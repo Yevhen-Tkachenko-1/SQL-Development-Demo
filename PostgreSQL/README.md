@@ -25,7 +25,8 @@ CREATE TABLE public.barries
 
 ```
 INSERT 
-    INTO public.barries (barry_name, colors, discovery_regions, discovery_date, relative_size) 
+    INTO public.barries 
+        (barry_name, colors, discovery_regions, discovery_date, relative_size) 
     VALUES
         ('Blueberry',   ARRAY['blue', 'purple'],        ARRAY['North America', 'Europe'], '1900-01-01'::date, 4),
         ('Strawberry',  ARRAY['red', 'pink'],           ARRAY['Europe', 'North America'], '1300-01-01'::date, 5),
