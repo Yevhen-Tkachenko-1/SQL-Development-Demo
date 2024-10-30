@@ -1,10 +1,45 @@
 # PostgreSQL Demo
 
-_Learn and play with PostgreSQL Database: make query for data reading, creating, updating, deleting_
+_Learn and play with PostgreSQL Database_
 
 Implemented based on LinkedIn learning course:
 [PostgreSQL Essential Training](https://www.linkedin.com/learning/postgresql-essential-training-22611610)
 
+## Prepare
+
+- Install PostgreSQL Server on your machine which is actual RDBMS
+- Install pgAdmin desktop app which is client for working with PostgreSQL Server
+- Install PSQL tool which is alternative client for working with PostgreSQL Server
+
+In this demo we will use pgAdmin app.
+
+## Theory
+
+PostgreSQL's data structure at top level looks like this:
+
+![](image/1.PNG)
+
+- Top elements are server groups which are used 
+  to separate different PostgreSQL Servers
+  running in different data centers, e.g. `local`, `AWS`, `On-premises` 
+  or in different environments like `dev`, `test`, `prod`.
+- Next we see `PostgreSQL 17` as the specific Server running on our local
+- Inside PostgreSQL Server we can have multiple databases 
+  which is secure logical separation of resources. 
+  This way we can have different databases for different purposes, e.g. `dev`, `test`, `prod`
+  without having multiple physical Servers.
+  In our case we have `metadata` and `postgres` databases
+
+Inside database, we have next structure:
+
+![](image/2.PNG)
+
+- Schemas are used to group different tables by domain, 
+  like schemas `assests`, `people`, `public` in our case.
+- Finally, inside schema, we have tables with columns
+
+
+## Practice
 
 #### Solution to the challenge: Create Table
 
@@ -24,7 +59,7 @@ CREATE TABLE public.barries
 ```
 In `pgAdmin` app &#8594; `barries` table &#8594; `SQL` tab it will look like this:
 
-![](image/1.PNG)
+![](image/3.PNG)
 
 Insert data to `barries` table:
 
@@ -47,4 +82,4 @@ INSERT
 
 In `pgAdmin` app &#8594; `barries` table &#8594; `All Rows` button it will look like this:
 
-![](image/2.PNG)
+![](image/4.PNG)
