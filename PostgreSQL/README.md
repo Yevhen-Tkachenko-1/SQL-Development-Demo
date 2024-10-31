@@ -51,10 +51,18 @@ Inside database, we have next structure:
 
 **Task:** 
 - Create table to store different kinds of Barry 
-- Have columns for `id`, `name`, `color` and any others to use different data types 
+- Have columns for `id`, `name`, `color` and any others to use different data types
+- Have column with CHECK constraint
+- Have column with `NOT NULL` flag
 - Check created table and its properties
-- Populate table with data
-- Check all rows of the table
+- Populate Table with data. 
+  Not specify (rely on DEFAULT) value for some column.
+  Set `NULL` for some values.
+- Check if Table populated as expected including DEFAULT values
+- Check how `NOT NULL` flag works when we create row with `NULL` value
+- Check how `NOT NULL` flag works when we update row with `NULL` value
+- Check how CHECK constraint works when we create row with improper value
+- Check how CHECK constraint works when we update row with improper value
 
 **Solution:**
 
@@ -91,20 +99,90 @@ INSERT
         (barry_name,    colors,                         discovery_regions,                discovery_date,     relative_size) 
     VALUES
         ('Blueberry',   ARRAY['blue', 'purple'],        ARRAY['North America', 'Europe'], '1900-01-01'::date,             4),
-        ('Strawberry',  ARRAY['red', 'pink'],           ARRAY['Europe', 'North America'], '1300-01-01'::date,             5),
+        ('Strawberry',  ARRAY['red', 'pink'],           ARRAY['Europe', 'North America'], '1300-01-01'::date,       DEFAULT),  -- DEFAULT for relative_size
         ('Raspberry',   ARRAY['red', 'black'],          ARRAY['Europe', 'Asia'],          '1500-01-01'::date,             6),
         ('Blackberry',  ARRAY['black', 'dark purple'],  ARRAY['North America', 'Europe'], '1600-01-01'::date,             7),
         ('Cranberry',   ARRAY['red'],                   ARRAY['North America'],           NULL,                           5),  -- NULL for discovery_date
         ('Gooseberry',  ARRAY['green', 'yellow'],       ARRAY['Europe', 'Asia'],          NULL,                           3),  -- NULL for discovery_date
         ('Mulberry',    ARRAY['black', 'white', 'red'], ARRAY['China', 'India'],          NULL,                           6),  -- NULL for discovery_date
-        ('Elderberry',  ARRAY['purple', 'black'],       ARRAY['Europe', 'North America'], '1000-01-01'::date,             5),
+        ('Elderberry',  ARRAY['purple', 'black'],       ARRAY['Europe', 'North America'], '1000-01-01'::date,       DEFAULT),  -- DEFAULT for relative_size
         ('Huckleberry', ARRAY['blue', 'purple'],        ARRAY['North America'],           '1900-01-01'::date,             4),
         ('Salmonberry', ARRAY['yellow', 'orange'],      ARRAY['Pacific Northwest'],       NULL,                           3);  -- NULL for discovery_date
 ```
 
-- Check data persistence using `pgAdmin` app &#8594; `barries` table &#8594; `All Rows` button:
+- Check data persistence including `DEFAULT` values for `relative_size` column
+  and `NULL` values for `discovery_date` column,
+  using `pgAdmin` app &#8594; `barries` table &#8594; `All Rows` button:
 
 ![](image/4.PNG)
+
+- Execute query to see that `NOT NULL` flag
+  protects `barries` table from inserting row with `NULL` value for `barry_name` column:
+
+```
+INSERT 
+    INTO challenge_create_table.barries
+       (barry_name, colors, discovery_regions, discovery_date, relative_size) 
+    VALUES
+        (NULL, ARRAY['blue', 'purple'], ARRAY['North America', 'Europe'], '1900-01-01'::date, 1);
+```
+```
+----- Messages ---------------------------------------------------------------------------------------------
+ERROR:  Null value in column "barry_name" violates not-null constraint in relation "barries"
+SQL state: 23502
+Detail: Failing row contains (11, null, {blue, purple}, 1, {"North America", Europe}, 1900-01-01).
+------------------------------------------------------------------------------------------------------------
+```
+
+- Execute query to see that `NOT NULL` flag
+  protects `barries` table from updating `barry_name` to `NULL`:
+
+```
+UPDATE challenge_create_table.barries
+SET barry_name = NULL 
+WHERE barry_id = 1;
+```
+```
+----- Messages ---------------------------------------------------------------------------------------------
+ERROR:  Null value in column "barry_name" violates not-null constraint in relation "barries"
+SQL state: 23502
+Detail: Failing row contains (1, null, {blue, purple}, 4, {"North America", Europe}, 1900-01-01).
+------------------------------------------------------------------------------------------------------------
+```
+
+- Execute query to see that `relative_size_range_check` CONSTRAINT 
+  protects `barries` table from inserting row with improper `relative_size` value:
+
+```
+INSERT 
+    INTO challenge_create_table.barries
+       (barry_name, colors, discovery_regions, discovery_date, relative_size) 
+    VALUES
+        ('Someberry', ARRAY['any'], ARRAY['North America', 'Europe'], '1900-01-01'::date, 0);
+```
+```
+----- Messages ---------------------------------------------------------------------------------------------
+ERROR:  New row for relation "barries" violates check constraint "relative_size_range_check"
+SQL state: 23514
+Detail: Failing row contains (11, Someberry, {any}, 0, {"North America", Europe}, 1900-01-01).
+------------------------------------------------------------------------------------------------------------
+```
+
+- Execute query to see that `relative_size_range_check` CONSTRAINT
+  protects `barries` table from updating `relative_size` to improper value:
+
+```
+UPDATE challenge_create_table.barries
+SET relative_size = 0 
+WHERE barry_id = 1;
+```
+```
+----- Messages ---------------------------------------------------------------------------------------------
+ERROR:  New row for relation "barries" violates check constraint "relative_size_range_check"
+SQL state: 23514
+Detail: Failing row contains (1, Blueberry, {blue,purple}, 0, {"North America", Europe}, 1900-01-01).
+------------------------------------------------------------------------------------------------------------
+```
 
 ### Challenge: Create Relation
 
