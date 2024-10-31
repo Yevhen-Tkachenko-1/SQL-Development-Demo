@@ -1,9 +1,15 @@
 # PostgreSQL Demo
 
-_Learn and play with PostgreSQL Database_
-
 Implemented based on LinkedIn learning course:
 [PostgreSQL Essential Training](https://www.linkedin.com/learning/postgresql-essential-training-22611610)
+
+**Content**:
+
+  * [Prepare](#prepare)
+  * [Theory](#theory)
+  * [Practice](#practice)
+    * [Challenge: Create Table](#challenge-create-table)
+    * [Challenge: Create Relation](#challenge-create-relation)
 
 ## Prepare
 
