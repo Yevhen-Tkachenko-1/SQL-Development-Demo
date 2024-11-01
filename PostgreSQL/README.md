@@ -58,11 +58,11 @@ Inside database, we have next structure:
 - Populate Table with data. 
   Not specify (rely on DEFAULT) value for some column.
   Set `NULL` for some values.
-- Check if Table populated as expected including DEFAULT values
+- Check if Table populated as expected including DEFAULT and `NULL` values
 - Check how `NOT NULL` flag works when we create row with `NULL` value
 - Check how `NOT NULL` flag works when we update row with `NULL` value
-- Check how CHECK constraint works when we create row with improper value
-- Check how CHECK constraint works when we update row with improper value
+- Check how `CHECK` constraint works when we create row with improper value
+- Check how `CHECK` constraint works when we update row with improper value
 
 **Solution:**
 
